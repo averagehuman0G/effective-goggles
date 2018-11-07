@@ -1,2 +1,2 @@
 # effective-goggles
-Python messaging back-end
+A websocket server used for anonymous messaging
