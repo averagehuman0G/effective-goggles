@@ -10,7 +10,16 @@ async def index(req):
 
 @sio.on('message')
 async def message(sid, data):
-    print("message ", data)
+    await sio.emit("message", data, skip_sid=sid)
+
+#@sio.on('enter room')
+#def enter_room(sid, data):
+#    sio.enter_room(sid, data['room']) 
+#
+#@sio.on('leave room')
+#def leave_room(sid, data):
+#    sio.leave_room(sid, data['room'])
+
 
 app.router.add_get('/', index);
 
