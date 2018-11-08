@@ -4,13 +4,25 @@ window.onload = function() {
 	const messageField = document.getElementById('message');
 	const messagesList = document.getElementById('messages');
 	const socketStatus = document.getElementById('status');
+	const nameField = document.getElementById('name');
 
-	const socket = io('http://0.0.0.0:8080'); 
+	const socket = io('http://9bc47026.ngrok.io'); 
 	socket.on('connect', function() {
 		socketStatus.innerHTML = 'Connected';
 		socketStatus.className = 'open';
 	});
 
+     nameForm.onsubmit = function(e){
+        e.preventDefault();
+        const nameSubmit = nameField.value;
+        socket.send(name);
+
+        messagesList.innerHTML += '<li class="sent"> <span>'nameField'</span> </li>';
+
+        messageField.value = '';
+
+        return false;
+    }
 
 	form.onsubmit = function(e) {
 		e.preventDefault();
