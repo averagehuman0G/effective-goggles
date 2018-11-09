@@ -12,39 +12,26 @@ window.onload = function() {
 		socketStatus.className = 'open';
 	});
 
-     nameForm.onsubmit = function(e){
-        e.preventDefault();
-        const nameSubmit = nameField.value;
-        socket.send(name);
-
-        messagesList.innerHTML += '<li class="sent"> <span>'nameField'</span> </li>';
-
-        messageField.value = '';
-
-        return false;
-    }
-
 	form.onsubmit = function(e) {
 		e.preventDefault();
 		const message = messageField.value;
-		socket.send(message);
+		const nameSubmit = nameField.value;
 
-		messagesList.innerHTML += '<li class="sent"> <span>Sent:</span>' + message + '</li>';
+		messagesList.innerHTML += '<li class="sent"> <span>' + nameSubmit + ': </span>' + message + '</li>';
 
 		messageField.value = '';
+		nameField.value = '';
 
 		return false;
 	};
 
 	socket.on('message', function(data) {
 		const message = data;
-		messagesList.innerHTML += '<li class="received"><span>Received:</span>' + message + '</li>';
-
+		messagesList.innerHTML += '<li class="received"> <span>' + nameSubmit + ': </span>' + message + '</li>';
 	});
 	
 	socket.on('disconnect', function() {
 		socketStatus.innerHTML = 'Disconnected from WebSocket.';
 		socketStatus.className = 'closed';
-
 	});
 };

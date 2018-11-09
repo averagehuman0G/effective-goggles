@@ -24,4 +24,4 @@ async def message(sid, data):
 app.router.add_get('/', index);
 
 if __name__ == '__main__':
-    web.run_app(app)        
+    web.run_app(app)
