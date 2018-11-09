@@ -5,7 +5,7 @@ window.onload = function() {
 	const messagesList = document.getElementById('messages');
 	const socketStatus = document.getElementById('status');
 
-	const socket = io('http://0.0.0.0:8080'); 
+	const socket = io('https://simanonmeseg.herokuapp.com/'); 
 	socket.on('connect', function() {
 		socketStatus.innerHTML = 'Connected';
 		socketStatus.className = 'open';
