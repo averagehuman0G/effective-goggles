@@ -6,7 +6,7 @@ window.onload = function() {
 	const socketStatus = document.getElementById('status');
 	const nameField = document.getElementById('name');
 
-	const socket = io('http://9bc47026.ngrok.io'); 
+	const socket = io('https://simanonmeseg.herokuapp.com/');
 	socket.on('connect', function() {
 		socketStatus.innerHTML = 'Connected';
 		socketStatus.className = 'open';
@@ -29,7 +29,7 @@ window.onload = function() {
 		const message = data;
 		messagesList.innerHTML += '<li class="received"> <span>' + nameSubmit + ': </span>' + message + '</li>';
 	});
-	
+
 	socket.on('disconnect', function() {
 		socketStatus.innerHTML = 'Disconnected from WebSocket.';
 		socketStatus.className = 'closed';
